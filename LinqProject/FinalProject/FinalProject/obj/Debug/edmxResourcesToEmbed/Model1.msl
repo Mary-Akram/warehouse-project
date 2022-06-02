@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Test2ModelStoreContainer" CdmEntityContainer="Test2Entities">
+    <EntitySetMapping Name="Stores">
+      <EntityTypeMapping TypeName="Test2Model.Store">
+        <MappingFragment StoreEntitySet="Store">
+          <ScalarProperty Name="St_Manger" ColumnName="St_Manger" />
+          <ScalarProperty Name="St_Adress" ColumnName="St_Adress" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Test2Model.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="Test2Model.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Exp_Date" ColumnName="Exp_Date" />
+          <ScalarProperty Name="P_Date" ColumnName="P_Date" />
+          <ScalarProperty Name="P_Name" ColumnName="P_Name" />
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrMeasures">
+      <EntityTypeMapping TypeName="Test2Model.PrMeasure">
+        <MappingFragment StoreEntitySet="PrMeasure">
+          <ScalarProperty Name="Measure" ColumnName="Measure" />
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="Test2Model.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="Cl_Fax" ColumnName="Cl_Fax" />
+          <ScalarProperty Name="Cl_Site" ColumnName="Cl_Site" />
+          <ScalarProperty Name="Cl_Phone" ColumnName="Cl_Phone" />
+          <ScalarProperty Name="Cl_Mobile" ColumnName="Cl_Mobile" />
+          <ScalarProperty Name="Cl_Name" ColumnName="Cl_Name" />
+          <ScalarProperty Name="Cl_Email" ColumnName="Cl_Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suppliers">
+      <EntityTypeMapping TypeName="Test2Model.Supplier">
+        <MappingFragment StoreEntitySet="Supplier">
+          <ScalarProperty Name="Sup_Site" ColumnName="Sup_Site" />
+          <ScalarProperty Name="Sup_Fax" ColumnName="Sup_Fax" />
+          <ScalarProperty Name="Sup_Mobile" ColumnName="Sup_Mobile" />
+          <ScalarProperty Name="Sup_phone" ColumnName="Sup_phone" />
+          <ScalarProperty Name="Sup_Email" ColumnName="Sup_Email" />
+          <ScalarProperty Name="Sup_Name" ColumnName="Sup_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PerImports">
+      <EntityTypeMapping TypeName="Test2Model.PerImport">
+        <MappingFragment StoreEntitySet="PerImport">
+          <ScalarProperty Name="Quentity" ColumnName="Quentity" />
+          <ScalarProperty Name="PerDate" ColumnName="PerDate" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+          <ScalarProperty Name="Sup_Email" ColumnName="Sup_Email" />
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+          <ScalarProperty Name="PerNum" ColumnName="PerNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PerExports">
+      <EntityTypeMapping TypeName="Test2Model.PerExport">
+        <MappingFragment StoreEntitySet="PerExport">
+          <ScalarProperty Name="Per_Date" ColumnName="Per_Date" />
+          <ScalarProperty Name="Cl_Email" ColumnName="Cl_Email" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+          <ScalarProperty Name="Per_Num" ColumnName="Per_Num" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExpQuantities">
+      <EntityTypeMapping TypeName="Test2Model.ExpQuantity">
+        <MappingFragment StoreEntitySet="ExpQuantity">
+          <ScalarProperty Name="Out_Quantity" ColumnName="Out_Quantity" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+          <ScalarProperty Name="Cl_Email" ColumnName="Cl_Email" />
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+          <ScalarProperty Name="Per_Num" ColumnName="Per_Num" />
+          <ScalarProperty Name="ExpId" ColumnName="ExpId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="PermitionImport" FunctionName="Test2Model.Store.PermitionImport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.PermitionImport_Result">
+          <ScalarProperty Name="PerNum" ColumnName="PerNum" />
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+          <ScalarProperty Name="Sup_Email" ColumnName="Sup_Email" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+          <ScalarProperty Name="PerDate" ColumnName="PerDate" />
+          <ScalarProperty Name="In_Quantity" ColumnName="In_Quantity" />
+          <ScalarProperty Name="Sup_Name" ColumnName="Sup_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="prodMeaser" FunctionName="Test2Model.Store.prodMeaser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.prodMeaser_Result">
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+          <ScalarProperty Name="P_Name" ColumnName="P_Name" />
+          <ScalarProperty Name="Measure" ColumnName="Measure" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proMeaser" FunctionName="Test2Model.Store.proMeaser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.proMeaser_Result">
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+          <ScalarProperty Name="Exp_Date" ColumnName="Exp_Date" />
+          <ScalarProperty Name="P_Date" ColumnName="P_Date" />
+          <ScalarProperty Name="P_Name" ColumnName="P_Name" />
+          <ScalarProperty Name="Measure" ColumnName="Measure" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpDateProduct" FunctionName="Test2Model.Store.UpDateProduct" />
+    <FunctionImportMapping FunctionImportName="UpDateMeasure" FunctionName="Test2Model.Store.UpDateMeasure" />
+    <FunctionImportMapping FunctionImportName="JoinTabel" FunctionName="Test2Model.Store.JoinTabel">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.JoinTabel_Result">
+          <ScalarProperty Name="Sup_Name" ColumnName="Sup_Name" />
+          <ScalarProperty Name="In_Quantity" ColumnName="In_Quantity" />
+          <ScalarProperty Name="P_Name" ColumnName="P_Name" />
+          <ScalarProperty Name="Exp_Date" ColumnName="Exp_Date" />
+          <ScalarProperty Name="production_Date" ColumnName="production_Date" />
+          <ScalarProperty Name="Import_Store" ColumnName="Import_Store" />
+          <ScalarProperty Name="Export_Store" ColumnName="Export_Store" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateTable" FunctionName="Test2Model.Store.UpdateTable" />
+    <FunctionImportMapping FunctionImportName="InsrImq" FunctionName="Test2Model.Store.InsrImq" />
+    <FunctionImportMapping FunctionImportName="InsrPer" FunctionName="Test2Model.Store.InsrPer" />
+    <FunctionImportMapping FunctionImportName="supper" FunctionName="Test2Model.Store.supper">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.supper_Result">
+          <ScalarProperty Name="PerNum" ColumnName="PerNum" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+          <ScalarProperty Name="Permisiondate" ColumnName="Permisiondate" />
+          <ScalarProperty Name="Sup_Name" ColumnName="Sup_Name" />
+          <ScalarProperty Name="P_Name" ColumnName="P_Name" />
+          <ScalarProperty Name="productionDate" ColumnName="productionDate" />
+          <ScalarProperty Name="expirationDate" ColumnName="expirationDate" />
+          <ScalarProperty Name="In_Quantity" ColumnName="In_Quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="disp" FunctionName="Test2Model.Store.disp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.disp_Result">
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="iteamplace" FunctionName="Test2Model.Store.iteamplace">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.iteamplace_Result">
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="transform" FunctionName="Test2Model.Store.transform" />
+    <FunctionImportMapping FunctionImportName="iteam" FunctionName="Test2Model.Store.iteam">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.iteam_Result">
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+          <ScalarProperty Name="ImpId" ColumnName="ImpId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="stinfo" FunctionName="Test2Model.Store.stinfo" />
+    <FunctionImportMapping FunctionImportName="find" FunctionName="Test2Model.Store.find">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.find_Result">
+          <ScalarProperty Name="PerNum" ColumnName="PerNum" />
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+          <ScalarProperty Name="Sup_Email" ColumnName="Sup_Email" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+          <ScalarProperty Name="PerDate" ColumnName="PerDate" />
+          <ScalarProperty Name="In_Quantity" ColumnName="In_Quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="up3" FunctionName="Test2Model.Store.up3" />
+    <FunctionImportMapping FunctionImportName="upPer" FunctionName="Test2Model.Store.upPer" />
+    <FunctionImportMapping FunctionImportName="upPer2" FunctionName="Test2Model.Store.upPer2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.upPer2_Result">
+          <ScalarProperty Name="PerNum" ColumnName="PerNum" />
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+          <ScalarProperty Name="Sup_Email" ColumnName="Sup_Email" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+          <ScalarProperty Name="PerDate" ColumnName="PerDate" />
+          <ScalarProperty Name="ImpId" ColumnName="ImpId" />
+          <ScalarProperty Name="In_Quantity" ColumnName="In_Quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Delet" FunctionName="Test2Model.Store.Delet" />
+    <FunctionImportMapping FunctionImportName="Delet2" FunctionName="Test2Model.Store.Delet2" />
+    <FunctionImportMapping FunctionImportName="Insrexq" FunctionName="Test2Model.Store.Insrexq" />
+    <FunctionImportMapping FunctionImportName="perEx" FunctionName="Test2Model.Store.perEx" />
+    <FunctionImportMapping FunctionImportName="upExPer" FunctionName="Test2Model.Store.upExPer" />
+    <FunctionImportMapping FunctionImportName="upQUExp3" FunctionName="Test2Model.Store.upQUExp3" />
+    <FunctionImportMapping FunctionImportName="disolayPerExp" FunctionName="Test2Model.Store.disolayPerExp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.disolayPerExp_Result">
+          <ScalarProperty Name="Per_Num" ColumnName="Per_Num" />
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+          <ScalarProperty Name="Cl_Email" ColumnName="Cl_Email" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+          <ScalarProperty Name="Per_Date" ColumnName="Per_Date" />
+          <ScalarProperty Name="ExpId" ColumnName="ExpId" />
+          <ScalarProperty Name="Out_Quantity" ColumnName="Out_Quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="diffDate" FunctionName="Test2Model.Store.diffDate" />
+    <FunctionImportMapping FunctionImportName="diffDate2" FunctionName="Test2Model.Store.diffDate2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.diffDate2_Result">
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+          <ScalarProperty Name="P_Name" ColumnName="P_Name" />
+          <ScalarProperty Name="P_Date" ColumnName="P_Date" />
+          <ScalarProperty Name="Exp_Date" ColumnName="Exp_Date" />
+          <ScalarProperty Name="Monthes" ColumnName="Monthes" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Report2" FunctionName="Test2Model.Store.Report2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.Report2_Result">
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+          <ScalarProperty Name="P_Name" ColumnName="P_Name" />
+          <ScalarProperty Name="P_Date" ColumnName="P_Date" />
+          <ScalarProperty Name="Exp_Date" ColumnName="Exp_Date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Rep3" FunctionName="Test2Model.Store.Rep3">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.Rep3_Result">
+          <ScalarProperty Name="importStore" ColumnName="importStore" />
+          <ScalarProperty Name="ExportStor" ColumnName="ExportStor" />
+          <ScalarProperty Name="P_Name" ColumnName="P_Name" />
+          <ScalarProperty Name="ImportDate" ColumnName="ImportDate" />
+          <ScalarProperty Name="ExportDate" ColumnName="ExportDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RepChose" FunctionName="Test2Model.Store.RepChose">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.RepChose_Result">
+          <ScalarProperty Name="importStore" ColumnName="importStore" />
+          <ScalarProperty Name="ExportStor" ColumnName="ExportStor" />
+          <ScalarProperty Name="P_Name" ColumnName="P_Name" />
+          <ScalarProperty Name="ImportDate" ColumnName="ImportDate" />
+          <ScalarProperty Name="ExportDate" ColumnName="ExportDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Export" FunctionName="Test2Model.Store.Export">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.Export_Result">
+          <ScalarProperty Name="Per_Num" ColumnName="Per_Num" />
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+          <ScalarProperty Name="Cl_Email" ColumnName="Cl_Email" />
+          <ScalarProperty Name="Per_Date" ColumnName="Per_Date" />
+          <ScalarProperty Name="Out_Quantity" ColumnName="Out_Quantity" />
+          <ScalarProperty Name="ExpId" ColumnName="ExpId" />
+          <ScalarProperty Name="P_Date" ColumnName="P_Date" />
+          <ScalarProperty Name="Exp_Date" ColumnName="Exp_Date" />
+          <ScalarProperty Name="P_Name" ColumnName="P_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="stprodus">
+      <EntityTypeMapping TypeName="Test2Model.stprodu">
+        <MappingFragment StoreEntitySet="stprodu">
+          <ScalarProperty Name="Quentity" ColumnName="Quentity" />
+          <ScalarProperty Name="P_code" ColumnName="P_code" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Perview" FunctionName="Test2Model.Store.Perview">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.Perview_Result">
+          <ScalarProperty Name="PerNum" ColumnName="PerNum" />
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+          <ScalarProperty Name="Sup_Email" ColumnName="Sup_Email" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+          <ScalarProperty Name="PerDate" ColumnName="PerDate" />
+          <ScalarProperty Name="Quentity" ColumnName="Quentity" />
+          <ScalarProperty Name="P_Name" ColumnName="P_Name" />
+          <ScalarProperty Name="Sup_Name" ColumnName="Sup_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ImpQuantities">
+      <EntityTypeMapping TypeName="Test2Model.ImpQuantity">
+        <MappingFragment StoreEntitySet="ImpQuantity">
+          <ScalarProperty Name="New_Store" ColumnName="New_Store" />
+          <ScalarProperty Name="Transform_Date" ColumnName="Transform_Date" />
+          <ScalarProperty Name="In_Quantity" ColumnName="In_Quantity" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+          <ScalarProperty Name="Sup_Email" ColumnName="Sup_Email" />
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+          <ScalarProperty Name="ImpId" ColumnName="ImpId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="chosecode" FunctionName="Test2Model.Store.chosecode" />
+    <FunctionImportMapping FunctionImportName="aftertrans" FunctionName="Test2Model.Store.aftertrans" />
+    <FunctionImportMapping FunctionImportName="Ret" FunctionName="Test2Model.Store.Ret">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.Ret_Result">
+          <ScalarProperty Name="ImpId" ColumnName="ImpId" />
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+          <ScalarProperty Name="Sup_Email" ColumnName="Sup_Email" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+          <ScalarProperty Name="In_Quantity" ColumnName="In_Quantity" />
+          <ScalarProperty Name="Transform_Date" ColumnName="Transform_Date" />
+          <ScalarProperty Name="New_Store" ColumnName="New_Store" />
+          <ScalarProperty Name="P_Name" ColumnName="P_Name" />
+          <ScalarProperty Name="P_Date" ColumnName="P_Date" />
+          <ScalarProperty Name="Exp_Date" ColumnName="Exp_Date" />
+          <ScalarProperty Name="Sup_Email1" ColumnName="Sup_Email1" />
+          <ScalarProperty Name="Sup_Name" ColumnName="Sup_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ret3" FunctionName="Test2Model.Store.Ret3">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.Ret3_Result">
+          <ScalarProperty Name="ImpId" ColumnName="ImpId" />
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+          <ScalarProperty Name="Sup_Email" ColumnName="Sup_Email" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+          <ScalarProperty Name="In_Quantity" ColumnName="In_Quantity" />
+          <ScalarProperty Name="Transform_Date" ColumnName="Transform_Date" />
+          <ScalarProperty Name="New_Store" ColumnName="New_Store" />
+          <ScalarProperty Name="P_Name" ColumnName="P_Name" />
+          <ScalarProperty Name="P_Date" ColumnName="P_Date" />
+          <ScalarProperty Name="Exp_Date" ColumnName="Exp_Date" />
+          <ScalarProperty Name="Sup_Name" ColumnName="Sup_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Trans1" FunctionName="Test2Model.Store.Trans1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.Trans1_Result">
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+          <ScalarProperty Name="import_Store" ColumnName="import_Store" />
+          <ScalarProperty Name="ExportStor" ColumnName="ExportStor" />
+          <ScalarProperty Name="ImportDate" ColumnName="ImportDate" />
+          <ScalarProperty Name="ExportDate" ColumnName="ExportDate" />
+          <ScalarProperty Name="Transform_Date" ColumnName="Transform_Date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Movment" FunctionName="Test2Model.Store.Movment">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.Movment_Result">
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+          <ScalarProperty Name="St_Adress" ColumnName="St_Adress" />
+          <ScalarProperty Name="St_Manger" ColumnName="St_Manger" />
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+          <ScalarProperty Name="Date_of_Import_Data" ColumnName="Date_of_Import_Data" />
+          <ScalarProperty Name="Date_of_Export_Data" ColumnName="Date_of_Export_Data" />
+          <ScalarProperty Name="Date_tranfer_Data" ColumnName="Date_tranfer_Data" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Trans" FunctionName="Test2Model.Store.Trans" />
+    <FunctionImportMapping FunctionImportName="diffDate3" FunctionName="Test2Model.Store.diffDate3">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Test2Model.diffDate3_Result">
+          <ScalarProperty Name="P_Code" ColumnName="P_Code" />
+          <ScalarProperty Name="P_Name" ColumnName="P_Name" />
+          <ScalarProperty Name="P_Date" ColumnName="P_Date" />
+          <ScalarProperty Name="Exp_Date" ColumnName="Exp_Date" />
+          <ScalarProperty Name="Monthes" ColumnName="Monthes" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

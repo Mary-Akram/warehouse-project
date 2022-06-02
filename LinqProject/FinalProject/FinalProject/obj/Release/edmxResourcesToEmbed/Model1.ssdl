@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Test2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Cl_Email" />
+    </Key>
+    <Property Name="Cl_Email" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Cl_Name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Cl_Mobile" Type="int" Nullable="false" />
+    <Property Name="Cl_Phone" Type="int" />
+    <Property Name="Cl_Site" Type="varchar" MaxLength="50" />
+    <Property Name="Cl_Fax" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="ExpQuantity">
+    <Key>
+      <PropertyRef Name="ExpId" />
+    </Key>
+    <Property Name="ExpId" Type="int" Nullable="false" />
+    <Property Name="Per_Num" Type="int" />
+    <Property Name="P_Code" Type="int" />
+    <Property Name="Cl_Email" Type="varchar" MaxLength="30" />
+    <Property Name="St_Name" Type="varchar" MaxLength="20" />
+    <Property Name="Out_Quantity" Type="int" />
+  </EntityType>
+  <EntityType Name="ImpQuantity">
+    <Key>
+      <PropertyRef Name="ImpId" />
+    </Key>
+    <Property Name="ImpId" Type="int" Nullable="false" />
+    <Property Name="Per_Num" Type="int" />
+    <Property Name="P_Code" Type="int" />
+    <Property Name="Sup_Email" Type="varchar" MaxLength="30" />
+    <Property Name="St_Name" Type="varchar" MaxLength="20" />
+    <Property Name="In_Quantity" Type="int" />
+  </EntityType>
+  <EntityType Name="PerExport">
+    <Key>
+      <PropertyRef Name="Per_Num" />
+    </Key>
+    <Property Name="Per_Num" Type="int" Nullable="false" />
+    <Property Name="P_Code" Type="int" />
+    <Property Name="St_Name" Type="varchar" MaxLength="20" />
+    <Property Name="Cl_Email" Type="varchar" MaxLength="30" />
+    <Property Name="Per_Date" Type="date" />
+  </EntityType>
+  <EntityType Name="PerImport">
+    <Key>
+      <PropertyRef Name="PerNum" />
+    </Key>
+    <Property Name="PerNum" Type="int" Nullable="false" />
+    <Property Name="P_Code" Type="int" />
+    <Property Name="Sup_Email" Type="varchar" MaxLength="30" />
+    <Property Name="St_Name" Type="varchar" MaxLength="20" />
+    <Property Name="PerDate" Type="date" />
+  </EntityType>
+  <EntityType Name="PrMeasure">
+    <Key>
+      <PropertyRef Name="P_Code" />
+      <PropertyRef Name="Measure" />
+    </Key>
+    <Property Name="P_Code" Type="int" Nullable="false" />
+    <Property Name="Measure" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="P_Code" />
+    </Key>
+    <Property Name="P_Code" Type="int" Nullable="false" />
+    <Property Name="P_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="P_Date" Type="date" Nullable="false" />
+    <Property Name="Exp_Date" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Store">
+    <Key>
+      <PropertyRef Name="St_Name" />
+    </Key>
+    <Property Name="St_Name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="St_Adress" Type="varchar" MaxLength="20" />
+    <Property Name="St_Manger" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="Sup_Email" />
+    </Key>
+    <Property Name="Sup_Name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Sup_Email" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Sup_phone" Type="int" />
+    <Property Name="Sup_Mobile" Type="int" Nullable="false" />
+    <Property Name="Sup_Fax" Type="varchar" MaxLength="30" />
+    <Property Name="Sup_Site" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_CEQ">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="ExpQuantity" Type="Self.ExpQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Cl_Email" />
+      </Principal>
+      <Dependent Role="ExpQuantity">
+        <PropertyRef Name="Cl_Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IEQ">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="ExpQuantity" Type="Self.ExpQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="P_Code" />
+      </Principal>
+      <Dependent Role="ExpQuantity">
+        <PropertyRef Name="P_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IIQ">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="ImpQuantity" Type="Self.ImpQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="P_Code" />
+      </Principal>
+      <Dependent Role="ImpQuantity">
+        <PropertyRef Name="P_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IM">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="PrMeasure" Type="Self.PrMeasure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="P_Code" />
+      </Principal>
+      <Dependent Role="PrMeasure">
+        <PropertyRef Name="P_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_P">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="PerImport" Type="Self.PerImport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="P_Code" />
+      </Principal>
+      <Dependent Role="PerImport">
+        <PropertyRef Name="P_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PE">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="PerExport" Type="Self.PerExport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="P_Code" />
+      </Principal>
+      <Dependent Role="PerExport">
+        <PropertyRef Name="P_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEQ">
+    <End Role="PerExport" Type="Self.PerExport" Multiplicity="0..1" />
+    <End Role="ExpQuantity" Type="Self.ExpQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PerExport">
+        <PropertyRef Name="Per_Num" />
+      </Principal>
+      <Dependent Role="ExpQuantity">
+        <PropertyRef Name="Per_Num" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PIQ">
+    <End Role="PerImport" Type="Self.PerImport" Multiplicity="0..1" />
+    <End Role="ImpQuantity" Type="Self.ImpQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PerImport">
+        <PropertyRef Name="PerNum" />
+      </Principal>
+      <Dependent Role="ImpQuantity">
+        <PropertyRef Name="Per_Num" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SIQ">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+    <End Role="ImpQuantity" Type="Self.ImpQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="Sup_Email" />
+      </Principal>
+      <Dependent Role="ImpQuantity">
+        <PropertyRef Name="Sup_Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SPE">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="PerExport" Type="Self.PerExport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Cl_Email" />
+      </Principal>
+      <Dependent Role="PerExport">
+        <PropertyRef Name="Cl_Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_St">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+    <End Role="PerImport" Type="Self.PerImport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="St_Name" />
+      </Principal>
+      <Dependent Role="PerImport">
+        <PropertyRef Name="St_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SUP">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+    <End Role="PerImport" Type="Self.PerImport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="Sup_Email" />
+      </Principal>
+      <Dependent Role="PerImport">
+        <PropertyRef Name="Sup_Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WHEQ">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+    <End Role="ExpQuantity" Type="Self.ExpQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="St_Name" />
+      </Principal>
+      <Dependent Role="ExpQuantity">
+        <PropertyRef Name="St_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WHIQ">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+    <End Role="ImpQuantity" Type="Self.ImpQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="St_Name" />
+      </Principal>
+      <Dependent Role="ImpQuantity">
+        <PropertyRef Name="St_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WHPE">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+    <End Role="PerExport" Type="Self.PerExport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="St_Name" />
+      </Principal>
+      <Dependent Role="PerExport">
+        <PropertyRef Name="St_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="JoinTabel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="PermitionImport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="prodMeaser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proMeaser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UpDateMeasure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="code" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="UpDateProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="code" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="varchar" Mode="In" />
+    <Parameter Name="PDate" Type="date" Mode="In" />
+    <Parameter Name="ExpDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="UpdateTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="storeImport" Type="varchar" Mode="In" />
+    <Parameter Name="storeExport" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="Test2ModelStoreContainer">
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExpQuantity" EntityType="Self.ExpQuantity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImpQuantity" EntityType="Self.ImpQuantity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PerExport" EntityType="Self.PerExport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PerImport" EntityType="Self.PerImport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PrMeasure" EntityType="Self.PrMeasure" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CEQ" Association="Self.FK_CEQ">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="ExpQuantity" EntitySet="ExpQuantity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IEQ" Association="Self.FK_IEQ">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ExpQuantity" EntitySet="ExpQuantity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IIQ" Association="Self.FK_IIQ">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ImpQuantity" EntitySet="ImpQuantity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IM" Association="Self.FK_IM">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="PrMeasure" EntitySet="PrMeasure" />
+    </AssociationSet>
+    <AssociationSet Name="FK_P" Association="Self.FK_P">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="PerImport" EntitySet="PerImport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PE" Association="Self.FK_PE">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="PerExport" EntitySet="PerExport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEQ" Association="Self.FK_PEQ">
+      <End Role="PerExport" EntitySet="PerExport" />
+      <End Role="ExpQuantity" EntitySet="ExpQuantity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PIQ" Association="Self.FK_PIQ">
+      <End Role="PerImport" EntitySet="PerImport" />
+      <End Role="ImpQuantity" EntitySet="ImpQuantity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SIQ" Association="Self.FK_SIQ">
+      <End Role="Supplier" EntitySet="Supplier" />
+      <End Role="ImpQuantity" EntitySet="ImpQuantity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SPE" Association="Self.FK_SPE">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="PerExport" EntitySet="PerExport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_St" Association="Self.FK_St">
+      <End Role="Store" EntitySet="Store" />
+      <End Role="PerImport" EntitySet="PerImport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SUP" Association="Self.FK_SUP">
+      <End Role="Supplier" EntitySet="Supplier" />
+      <End Role="PerImport" EntitySet="PerImport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WHEQ" Association="Self.FK_WHEQ">
+      <End Role="Store" EntitySet="Store" />
+      <End Role="ExpQuantity" EntitySet="ExpQuantity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WHIQ" Association="Self.FK_WHIQ">
+      <End Role="Store" EntitySet="Store" />
+      <End Role="ImpQuantity" EntitySet="ImpQuantity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WHPE" Association="Self.FK_WHPE">
+      <End Role="Store" EntitySet="Store" />
+      <End Role="PerExport" EntitySet="PerExport" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

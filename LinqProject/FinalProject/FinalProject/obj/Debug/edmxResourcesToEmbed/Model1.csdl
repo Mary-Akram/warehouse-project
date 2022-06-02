@@ -1,0 +1,733 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Test2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Test2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Stores" EntityType="Test2Model.Store" />
+    <EntitySet Name="sysdiagrams" EntityType="Test2Model.sysdiagram" />
+    <EntitySet Name="Products" EntityType="Test2Model.Product" />
+    <EntitySet Name="PrMeasures" EntityType="Test2Model.PrMeasure" />
+    <AssociationSet Name="FK_IM1" Association="Test2Model.FK_IM1">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="PrMeasure" EntitySet="PrMeasures" />
+    </AssociationSet>
+    <EntitySet Name="Clients" EntityType="Test2Model.Client" />
+    <EntitySet Name="Suppliers" EntityType="Test2Model.Supplier" />
+    <EntitySet Name="PerImports" EntityType="Test2Model.PerImport" />
+    <AssociationSet Name="FK_P" Association="Test2Model.FK_P">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="PerImport" EntitySet="PerImports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_St" Association="Test2Model.FK_St">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="PerImport" EntitySet="PerImports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SUP" Association="Test2Model.FK_SUP">
+      <End Role="Supplier" EntitySet="Suppliers" />
+      <End Role="PerImport" EntitySet="PerImports" />
+    </AssociationSet>
+    <EntitySet Name="PerExports" EntityType="Test2Model.PerExport" />
+    <AssociationSet Name="FK_SPE" Association="Test2Model.FK_SPE">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="PerExport" EntitySet="PerExports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PE" Association="Test2Model.FK_PE">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="PerExport" EntitySet="PerExports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WHPE" Association="Test2Model.FK_WHPE">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="PerExport" EntitySet="PerExports" />
+    </AssociationSet>
+    <EntitySet Name="ExpQuantities" EntityType="Test2Model.ExpQuantity" />
+    <AssociationSet Name="FK_CEQ" Association="Test2Model.FK_CEQ">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="ExpQuantity" EntitySet="ExpQuantities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IEQ" Association="Test2Model.FK_IEQ">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ExpQuantity" EntitySet="ExpQuantities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEQ" Association="Test2Model.FK_PEQ">
+      <End Role="PerExport" EntitySet="PerExports" />
+      <End Role="ExpQuantity" EntitySet="ExpQuantities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WHEQ" Association="Test2Model.FK_WHEQ">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="ExpQuantity" EntitySet="ExpQuantities" />
+    </AssociationSet>
+    <FunctionImport Name="PermitionImport" ReturnType="Collection(Test2Model.PermitionImport_Result)" />
+    <FunctionImport Name="prodMeaser" ReturnType="Collection(Test2Model.prodMeaser_Result)" />
+    <FunctionImport Name="proMeaser" ReturnType="Collection(Test2Model.proMeaser_Result)" />
+    <FunctionImport Name="UpDateProduct">
+      <Parameter Name="code" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="PDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ExpDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="UpDateMeasure">
+      <Parameter Name="code" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="JoinTabel" ReturnType="Collection(Test2Model.JoinTabel_Result)" />
+    <FunctionImport Name="UpdateTable">
+      <Parameter Name="storeImport" Mode="In" Type="String" />
+      <Parameter Name="storeExport" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsrImq">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="perNum" Mode="In" Type="Int32" />
+      <Parameter Name="codepro" Mode="In" Type="Int32" />
+      <Parameter Name="supEmail" Mode="In" Type="String" />
+      <Parameter Name="StName" Mode="In" Type="String" />
+      <Parameter Name="quint" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsrPer">
+      <Parameter Name="perNum" Mode="In" Type="Int32" />
+      <Parameter Name="codepro" Mode="In" Type="Int32" />
+      <Parameter Name="supEmail" Mode="In" Type="String" />
+      <Parameter Name="StName" Mode="In" Type="String" />
+      <Parameter Name="perdate" Mode="In" Type="DateTime" />
+      <Parameter Name="QU" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="supper" ReturnType="Collection(Test2Model.supper_Result)" />
+    <FunctionImport Name="disp" ReturnType="Collection(Test2Model.disp_Result)" />
+    <FunctionImport Name="iteamplace" ReturnType="Collection(Test2Model.iteamplace_Result)">
+      <Parameter Name="Pro" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="transform" ReturnType="Collection(Int32)">
+      <Parameter Name="Name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="iteam" ReturnType="Collection(Test2Model.iteam_Result)">
+      <Parameter Name="Pro" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="stinfo" ReturnType="Collection(Int32)">
+      <Parameter Name="st" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="find" ReturnType="Collection(Test2Model.find_Result)">
+      <Parameter Name="pr" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="up3">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="perNum" Mode="In" Type="Int32" />
+      <Parameter Name="codepro" Mode="In" Type="Int32" />
+      <Parameter Name="supEmail" Mode="In" Type="String" />
+      <Parameter Name="StName" Mode="In" Type="String" />
+      <Parameter Name="quint" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="upPer">
+      <Parameter Name="perNum" Mode="In" Type="Int32" />
+      <Parameter Name="codepro" Mode="In" Type="Int32" />
+      <Parameter Name="supEmail" Mode="In" Type="String" />
+      <Parameter Name="StName" Mode="In" Type="String" />
+      <Parameter Name="perdate" Mode="In" Type="DateTime" />
+      <Parameter Name="Qu" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="upPer2" ReturnType="Collection(Test2Model.upPer2_Result)" />
+    <FunctionImport Name="Delet">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Delet2">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Insrexq">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="perNum" Mode="In" Type="Int32" />
+      <Parameter Name="codepro" Mode="In" Type="Int32" />
+      <Parameter Name="clEmail" Mode="In" Type="String" />
+      <Parameter Name="StName" Mode="In" Type="String" />
+      <Parameter Name="quint" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="perEx">
+      <Parameter Name="perNum" Mode="In" Type="Int32" />
+      <Parameter Name="codepro" Mode="In" Type="Int32" />
+      <Parameter Name="supEmail" Mode="In" Type="String" />
+      <Parameter Name="StName" Mode="In" Type="String" />
+      <Parameter Name="perdate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="upExPer">
+      <Parameter Name="perNum" Mode="In" Type="Int32" />
+      <Parameter Name="codepro" Mode="In" Type="Int32" />
+      <Parameter Name="supEmail" Mode="In" Type="String" />
+      <Parameter Name="StName" Mode="In" Type="String" />
+      <Parameter Name="perdate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="upQUExp3">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="perNum" Mode="In" Type="Int32" />
+      <Parameter Name="codepro" Mode="In" Type="Int32" />
+      <Parameter Name="supEmail" Mode="In" Type="String" />
+      <Parameter Name="StName" Mode="In" Type="String" />
+      <Parameter Name="quint" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="disolayPerExp" ReturnType="Collection(Test2Model.disolayPerExp_Result)" />
+    <FunctionImport Name="diffDate" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="diffDate2" ReturnType="Collection(Test2Model.diffDate2_Result)">
+      <Parameter Name="m" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Report2" ReturnType="Collection(Test2Model.Report2_Result)">
+      <Parameter Name="P" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Rep3" ReturnType="Collection(Test2Model.Rep3_Result)" />
+    <FunctionImport Name="RepChose" ReturnType="Collection(Test2Model.RepChose_Result)">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Export" ReturnType="Collection(Test2Model.Export_Result)" />
+    <EntitySet Name="stprodus" EntityType="Test2Model.stprodu" />
+    <AssociationSet Name="FK__stprodu__P_code__01142BA1" Association="Test2Model.FK__stprodu__P_code__01142BA1">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="stprodu" EntitySet="stprodus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__stprodu__St_Name__00200768" Association="Test2Model.FK__stprodu__St_Name__00200768">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="stprodu" EntitySet="stprodus" />
+    </AssociationSet>
+    <FunctionImport Name="Perview" ReturnType="Collection(Test2Model.Perview_Result)" />
+    <EntitySet Name="ImpQuantities" EntityType="Test2Model.ImpQuantity" />
+    <AssociationSet Name="FK_IIQ" Association="Test2Model.FK_IIQ">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ImpQuantity" EntitySet="ImpQuantities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SIQ" Association="Test2Model.FK_SIQ">
+      <End Role="Supplier" EntitySet="Suppliers" />
+      <End Role="ImpQuantity" EntitySet="ImpQuantities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WHIQ" Association="Test2Model.FK_WHIQ">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="ImpQuantity" EntitySet="ImpQuantities" />
+    </AssociationSet>
+    <FunctionImport Name="chosecode" ReturnType="Collection(String)">
+      <Parameter Name="code" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aftertrans">
+      <Parameter Name="qu" Mode="In" Type="Int32" />
+      <Parameter Name="stname" Mode="In" Type="String" />
+      <Parameter Name="code" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ret" ReturnType="Collection(Test2Model.Ret_Result)" />
+    <FunctionImport Name="Ret3" ReturnType="Collection(Test2Model.Ret3_Result)" />
+    <FunctionImport Name="Trans1" ReturnType="Collection(Test2Model.Trans1_Result)">
+      <Parameter Name="st" Mode="In" Type="String" />
+      <Parameter Name="from" Mode="In" Type="DateTime" />
+      <Parameter Name="too" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Movment" ReturnType="Collection(Test2Model.Movment_Result)" />
+    <FunctionImport Name="Trans">
+      <Parameter Name="to" Mode="In" Type="String" />
+      <Parameter Name="P" Mode="In" Type="String" />
+      <Parameter Name="Qu" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="diffDate3" ReturnType="Collection(Test2Model.diffDate3_Result)" />
+  </EntityContainer>
+  <EntityType Name="Store">
+    <Key>
+      <PropertyRef Name="St_Name" />
+    </Key>
+    <Property Name="St_Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="St_Adress" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="St_Manger" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PerImports" Relationship="Test2Model.FK_St" FromRole="Store" ToRole="PerImport" />
+    <NavigationProperty Name="PerExports" Relationship="Test2Model.FK_WHPE" FromRole="Store" ToRole="PerExport" />
+    <NavigationProperty Name="ExpQuantities" Relationship="Test2Model.FK_WHEQ" FromRole="Store" ToRole="ExpQuantity" />
+    <NavigationProperty Name="stprodus" Relationship="Test2Model.FK__stprodu__St_Name__00200768" FromRole="Store" ToRole="stprodu" />
+    <NavigationProperty Name="ImpQuantities" Relationship="Test2Model.FK_WHIQ" FromRole="Store" ToRole="ImpQuantity" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="P_Code" />
+    </Key>
+    <Property Name="P_Code" Type="Int32" Nullable="false" />
+    <Property Name="P_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="P_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Exp_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="PrMeasures" Relationship="Test2Model.FK_IM1" FromRole="Product" ToRole="PrMeasure" />
+    <NavigationProperty Name="PerImports" Relationship="Test2Model.FK_P" FromRole="Product" ToRole="PerImport" />
+    <NavigationProperty Name="PerExports" Relationship="Test2Model.FK_PE" FromRole="Product" ToRole="PerExport" />
+    <NavigationProperty Name="ExpQuantities" Relationship="Test2Model.FK_IEQ" FromRole="Product" ToRole="ExpQuantity" />
+    <NavigationProperty Name="stprodus" Relationship="Test2Model.FK__stprodu__P_code__01142BA1" FromRole="Product" ToRole="stprodu" />
+    <NavigationProperty Name="ImpQuantities" Relationship="Test2Model.FK_IIQ" FromRole="Product" ToRole="ImpQuantity" />
+  </EntityType>
+  <EntityType Name="PrMeasure">
+    <Key>
+      <PropertyRef Name="P_Code" />
+      <PropertyRef Name="Measure" />
+    </Key>
+    <Property Name="P_Code" Type="Int32" Nullable="false" />
+    <Property Name="Measure" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Product" Relationship="Test2Model.FK_IM1" FromRole="PrMeasure" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK_IM1">
+    <End Type="Test2Model.Product" Role="Product" Multiplicity="1" />
+    <End Type="Test2Model.PrMeasure" Role="PrMeasure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="P_Code" />
+      </Principal>
+      <Dependent Role="PrMeasure">
+        <PropertyRef Name="P_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Cl_Email" />
+    </Key>
+    <Property Name="Cl_Email" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Cl_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Cl_Mobile" Type="Int32" Nullable="false" />
+    <Property Name="Cl_Phone" Type="Int32" />
+    <Property Name="Cl_Site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cl_Fax" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PerExports" Relationship="Test2Model.FK_SPE" FromRole="Client" ToRole="PerExport" />
+    <NavigationProperty Name="ExpQuantities" Relationship="Test2Model.FK_CEQ" FromRole="Client" ToRole="ExpQuantity" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="Sup_Email" />
+    </Key>
+    <Property Name="Sup_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Sup_Email" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Sup_phone" Type="Int32" />
+    <Property Name="Sup_Mobile" Type="Int32" Nullable="false" />
+    <Property Name="Sup_Fax" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Sup_Site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PerImports" Relationship="Test2Model.FK_SUP" FromRole="Supplier" ToRole="PerImport" />
+    <NavigationProperty Name="ImpQuantities" Relationship="Test2Model.FK_SIQ" FromRole="Supplier" ToRole="ImpQuantity" />
+  </EntityType>
+  <EntityType Name="PerImport">
+    <Key>
+      <PropertyRef Name="PerNum" />
+    </Key>
+    <Property Name="PerNum" Type="Int32" Nullable="false" />
+    <Property Name="P_Code" Type="Int32" />
+    <Property Name="Sup_Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="St_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PerDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Product" Relationship="Test2Model.FK_P" FromRole="PerImport" ToRole="Product" />
+    <NavigationProperty Name="Store" Relationship="Test2Model.FK_St" FromRole="PerImport" ToRole="Store" />
+    <NavigationProperty Name="Supplier" Relationship="Test2Model.FK_SUP" FromRole="PerImport" ToRole="Supplier" />
+    <Property Name="Quentity" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_P">
+    <End Type="Test2Model.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="Test2Model.PerImport" Role="PerImport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="P_Code" />
+      </Principal>
+      <Dependent Role="PerImport">
+        <PropertyRef Name="P_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_St">
+    <End Type="Test2Model.Store" Role="Store" Multiplicity="0..1" />
+    <End Type="Test2Model.PerImport" Role="PerImport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="St_Name" />
+      </Principal>
+      <Dependent Role="PerImport">
+        <PropertyRef Name="St_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SUP">
+    <End Type="Test2Model.Supplier" Role="Supplier" Multiplicity="0..1" />
+    <End Type="Test2Model.PerImport" Role="PerImport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="Sup_Email" />
+      </Principal>
+      <Dependent Role="PerImport">
+        <PropertyRef Name="Sup_Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PerExport">
+    <Key>
+      <PropertyRef Name="Per_Num" />
+    </Key>
+    <Property Name="Per_Num" Type="Int32" Nullable="false" />
+    <Property Name="P_Code" Type="Int32" />
+    <Property Name="St_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Cl_Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Per_Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Client" Relationship="Test2Model.FK_SPE" FromRole="PerExport" ToRole="Client" />
+    <NavigationProperty Name="Product" Relationship="Test2Model.FK_PE" FromRole="PerExport" ToRole="Product" />
+    <NavigationProperty Name="Store" Relationship="Test2Model.FK_WHPE" FromRole="PerExport" ToRole="Store" />
+    <NavigationProperty Name="ExpQuantities" Relationship="Test2Model.FK_PEQ" FromRole="PerExport" ToRole="ExpQuantity" />
+  </EntityType>
+  <Association Name="FK_SPE">
+    <End Type="Test2Model.Client" Role="Client" Multiplicity="0..1" />
+    <End Type="Test2Model.PerExport" Role="PerExport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Cl_Email" />
+      </Principal>
+      <Dependent Role="PerExport">
+        <PropertyRef Name="Cl_Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PE">
+    <End Type="Test2Model.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="Test2Model.PerExport" Role="PerExport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="P_Code" />
+      </Principal>
+      <Dependent Role="PerExport">
+        <PropertyRef Name="P_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WHPE">
+    <End Type="Test2Model.Store" Role="Store" Multiplicity="0..1" />
+    <End Type="Test2Model.PerExport" Role="PerExport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="St_Name" />
+      </Principal>
+      <Dependent Role="PerExport">
+        <PropertyRef Name="St_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ExpQuantity">
+    <Key>
+      <PropertyRef Name="ExpId" />
+    </Key>
+    <Property Name="ExpId" Type="Int32" Nullable="false" />
+    <Property Name="Per_Num" Type="Int32" />
+    <Property Name="P_Code" Type="Int32" />
+    <Property Name="Cl_Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="St_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Out_Quantity" Type="Int32" />
+    <NavigationProperty Name="Client" Relationship="Test2Model.FK_CEQ" FromRole="ExpQuantity" ToRole="Client" />
+    <NavigationProperty Name="Product" Relationship="Test2Model.FK_IEQ" FromRole="ExpQuantity" ToRole="Product" />
+    <NavigationProperty Name="PerExport" Relationship="Test2Model.FK_PEQ" FromRole="ExpQuantity" ToRole="PerExport" />
+    <NavigationProperty Name="Store" Relationship="Test2Model.FK_WHEQ" FromRole="ExpQuantity" ToRole="Store" />
+  </EntityType>
+  <Association Name="FK_CEQ">
+    <End Type="Test2Model.Client" Role="Client" Multiplicity="0..1" />
+    <End Type="Test2Model.ExpQuantity" Role="ExpQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Cl_Email" />
+      </Principal>
+      <Dependent Role="ExpQuantity">
+        <PropertyRef Name="Cl_Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IEQ">
+    <End Type="Test2Model.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="Test2Model.ExpQuantity" Role="ExpQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="P_Code" />
+      </Principal>
+      <Dependent Role="ExpQuantity">
+        <PropertyRef Name="P_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEQ">
+    <End Type="Test2Model.PerExport" Role="PerExport" Multiplicity="0..1" />
+    <End Type="Test2Model.ExpQuantity" Role="ExpQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PerExport">
+        <PropertyRef Name="Per_Num" />
+      </Principal>
+      <Dependent Role="ExpQuantity">
+        <PropertyRef Name="Per_Num" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WHEQ">
+    <End Type="Test2Model.Store" Role="Store" Multiplicity="0..1" />
+    <End Type="Test2Model.ExpQuantity" Role="ExpQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="St_Name" />
+      </Principal>
+      <Dependent Role="ExpQuantity">
+        <PropertyRef Name="St_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="PermitionImport_Result">
+    <Property Type="Int32" Name="PerNum" Nullable="false" />
+    <Property Type="Int32" Name="P_Code" Nullable="true" />
+    <Property Type="String" Name="Sup_Email" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="St_Name" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="PerDate" Nullable="true" />
+    <Property Type="Int32" Name="In_Quantity" Nullable="true" />
+    <Property Type="String" Name="Sup_Name" Nullable="false" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="prodMeaser_Result">
+    <Property Type="Int32" Name="P_Code" Nullable="false" />
+    <Property Type="String" Name="P_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Measure" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="proMeaser_Result">
+    <Property Type="Int32" Name="P_Code" Nullable="false" />
+    <Property Type="DateTime" Name="Exp_Date" Nullable="false" />
+    <Property Type="DateTime" Name="P_Date" Nullable="false" />
+    <Property Type="String" Name="P_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Measure" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="JoinTabel_Result">
+    <Property Type="String" Name="Sup_Name" Nullable="false" MaxLength="30" />
+    <Property Type="Int32" Name="In_Quantity" Nullable="true" />
+    <Property Type="String" Name="P_Name" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="Exp_Date" Nullable="false" />
+    <Property Type="DateTime" Name="production_Date" Nullable="false" />
+    <Property Type="String" Name="Import_Store" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Export_Store" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="supper_Result">
+    <Property Type="Int32" Name="PerNum" Nullable="false" />
+    <Property Type="String" Name="St_Name" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="Permisiondate" Nullable="true" />
+    <Property Type="String" Name="Sup_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="P_Name" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="productionDate" Nullable="false" />
+    <Property Type="DateTime" Name="expirationDate" Nullable="false" />
+    <Property Type="Int32" Name="In_Quantity" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="disp_Result">
+    <Property Type="Int32" Name="P_Code" Nullable="false" />
+    <Property Type="String" Name="St_Name" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="iteamplace_Result">
+    <Property Type="Int32" Name="P_Code" Nullable="false" />
+    <Property Type="String" Name="St_Name" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="iteam_Result">
+    <Property Type="Int32" Name="P_Code" Nullable="false" />
+    <Property Type="String" Name="St_Name" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="ImpId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="find_Result">
+    <Property Type="Int32" Name="PerNum" Nullable="false" />
+    <Property Type="Int32" Name="P_Code" Nullable="true" />
+    <Property Type="String" Name="Sup_Email" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="St_Name" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="PerDate" Nullable="true" />
+    <Property Type="Int32" Name="In_Quantity" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="upPer2_Result">
+    <Property Type="Int32" Name="PerNum" Nullable="false" />
+    <Property Type="Int32" Name="P_Code" Nullable="true" />
+    <Property Type="String" Name="Sup_Email" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="St_Name" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="PerDate" Nullable="true" />
+    <Property Type="Int32" Name="ImpId" Nullable="false" />
+    <Property Type="Int32" Name="In_Quantity" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="disolayPerExp_Result">
+    <Property Type="Int32" Name="Per_Num" Nullable="false" />
+    <Property Type="Int32" Name="P_Code" Nullable="true" />
+    <Property Type="String" Name="Cl_Email" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="St_Name" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="Per_Date" Nullable="true" />
+    <Property Type="Int32" Name="ExpId" Nullable="false" />
+    <Property Type="Int32" Name="Out_Quantity" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="diffDate2_Result">
+    <Property Type="Int32" Name="P_Code" Nullable="false" />
+    <Property Type="String" Name="P_Name" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="P_Date" Nullable="false" />
+    <Property Type="DateTime" Name="Exp_Date" Nullable="false" />
+    <Property Type="Int32" Name="Monthes" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Report2_Result">
+    <Property Type="Int32" Name="P_Code" Nullable="false" />
+    <Property Type="String" Name="P_Name" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="P_Date" Nullable="false" />
+    <Property Type="DateTime" Name="Exp_Date" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Rep3_Result">
+    <Property Type="String" Name="importStore" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ExportStor" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="P_Name" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="ImportDate" Nullable="true" />
+    <Property Type="DateTime" Name="ExportDate" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="RepChose_Result">
+    <Property Type="String" Name="importStore" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ExportStor" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="P_Name" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="ImportDate" Nullable="true" />
+    <Property Type="DateTime" Name="ExportDate" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Export_Result">
+    <Property Type="Int32" Name="Per_Num" Nullable="false" />
+    <Property Type="Int32" Name="P_Code" Nullable="true" />
+    <Property Type="String" Name="St_Name" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Cl_Email" Nullable="true" MaxLength="30" />
+    <Property Type="DateTime" Name="Per_Date" Nullable="true" />
+    <Property Type="Int32" Name="Out_Quantity" Nullable="true" />
+    <Property Type="Int32" Name="ExpId" Nullable="false" />
+    <Property Type="DateTime" Name="P_Date" Nullable="false" />
+    <Property Type="DateTime" Name="Exp_Date" Nullable="false" />
+    <Property Type="String" Name="P_Name" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="stprodu">
+    <Key>
+      <PropertyRef Name="St_Name" />
+      <PropertyRef Name="P_code" />
+    </Key>
+    <Property Name="St_Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="P_code" Type="Int32" Nullable="false" />
+    <Property Name="Quentity" Type="Int32" />
+    <NavigationProperty Name="Product" Relationship="Test2Model.FK__stprodu__P_code__01142BA1" FromRole="stprodu" ToRole="Product" />
+    <NavigationProperty Name="Store" Relationship="Test2Model.FK__stprodu__St_Name__00200768" FromRole="stprodu" ToRole="Store" />
+  </EntityType>
+  <Association Name="FK__stprodu__P_code__01142BA1">
+    <End Type="Test2Model.Product" Role="Product" Multiplicity="1" />
+    <End Type="Test2Model.stprodu" Role="stprodu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="P_Code" />
+      </Principal>
+      <Dependent Role="stprodu">
+        <PropertyRef Name="P_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__stprodu__St_Name__00200768">
+    <End Type="Test2Model.Store" Role="Store" Multiplicity="1" />
+    <End Type="Test2Model.stprodu" Role="stprodu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="St_Name" />
+      </Principal>
+      <Dependent Role="stprodu">
+        <PropertyRef Name="St_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="Perview_Result">
+    <Property Type="Int32" Name="PerNum" Nullable="false" />
+    <Property Type="Int32" Name="P_Code" Nullable="true" />
+    <Property Type="String" Name="Sup_Email" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="St_Name" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="PerDate" Nullable="true" />
+    <Property Type="Int32" Name="Quentity" Nullable="true" />
+    <Property Type="String" Name="P_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Sup_Name" Nullable="false" MaxLength="30" />
+  </ComplexType>
+  <EntityType Name="ImpQuantity">
+    <Key>
+      <PropertyRef Name="ImpId" />
+    </Key>
+    <Property Name="ImpId" Type="Int32" Nullable="false" />
+    <Property Name="P_Code" Type="Int32" />
+    <Property Name="Sup_Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="St_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="In_Quantity" Type="Int32" />
+    <Property Name="Transform_Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Product" Relationship="Test2Model.FK_IIQ" FromRole="ImpQuantity" ToRole="Product" />
+    <NavigationProperty Name="Supplier" Relationship="Test2Model.FK_SIQ" FromRole="ImpQuantity" ToRole="Supplier" />
+    <NavigationProperty Name="Store" Relationship="Test2Model.FK_WHIQ" FromRole="ImpQuantity" ToRole="Store" />
+    <Property Name="New_Store" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_IIQ">
+    <End Type="Test2Model.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="Test2Model.ImpQuantity" Role="ImpQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="P_Code" />
+      </Principal>
+      <Dependent Role="ImpQuantity">
+        <PropertyRef Name="P_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SIQ">
+    <End Type="Test2Model.Supplier" Role="Supplier" Multiplicity="0..1" />
+    <End Type="Test2Model.ImpQuantity" Role="ImpQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="Sup_Email" />
+      </Principal>
+      <Dependent Role="ImpQuantity">
+        <PropertyRef Name="Sup_Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WHIQ">
+    <End Type="Test2Model.Store" Role="Store" Multiplicity="0..1" />
+    <End Type="Test2Model.ImpQuantity" Role="ImpQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="St_Name" />
+      </Principal>
+      <Dependent Role="ImpQuantity">
+        <PropertyRef Name="St_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="Ret_Result">
+    <Property Type="Int32" Name="ImpId" Nullable="false" />
+    <Property Type="Int32" Name="P_Code" Nullable="true" />
+    <Property Type="String" Name="Sup_Email" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="St_Name" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="In_Quantity" Nullable="true" />
+    <Property Type="DateTime" Name="Transform_Date" Nullable="true" />
+    <Property Type="String" Name="New_Store" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="P_Name" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="P_Date" Nullable="false" />
+    <Property Type="DateTime" Name="Exp_Date" Nullable="false" />
+    <Property Type="String" Name="Sup_Email1" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Sup_Name" Nullable="false" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="Ret3_Result">
+    <Property Type="Int32" Name="ImpId" Nullable="false" />
+    <Property Type="Int32" Name="P_Code" Nullable="true" />
+    <Property Type="String" Name="Sup_Email" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="St_Name" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="In_Quantity" Nullable="true" />
+    <Property Type="DateTime" Name="Transform_Date" Nullable="true" />
+    <Property Type="String" Name="New_Store" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="P_Name" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="P_Date" Nullable="false" />
+    <Property Type="DateTime" Name="Exp_Date" Nullable="false" />
+    <Property Type="String" Name="Sup_Name" Nullable="false" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="Trans1_Result">
+    <Property Type="String" Name="St_Name" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="import_Store" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ExportStor" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="ImportDate" Nullable="true" />
+    <Property Type="DateTime" Name="ExportDate" Nullable="true" />
+    <Property Type="DateTime" Name="Transform_Date" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Movment_Result">
+    <Property Type="String" Name="St_Name" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="St_Adress" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="St_Manger" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="P_Code" Nullable="true" />
+    <Property Type="DateTime" Name="Date_of_Import_Data" Nullable="true" />
+    <Property Type="DateTime" Name="Date_of_Export_Data" Nullable="true" />
+    <Property Type="DateTime" Name="Date_tranfer_Data" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="diffDate3_Result">
+    <Property Type="Int32" Name="P_Code" Nullable="false" />
+    <Property Type="String" Name="P_Name" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="P_Date" Nullable="false" />
+    <Property Type="DateTime" Name="Exp_Date" Nullable="false" />
+    <Property Type="Int32" Name="Monthes" Nullable="true" />
+  </ComplexType>
+</Schema>

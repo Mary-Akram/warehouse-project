@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c4cb3d97ceb34202b70832586ecd83a3" Name="Diagram1" ZoomLevel="114">
+        <EntityTypeShape EntityType="Test2Model.Store" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Test2Model.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Test2Model.Product" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Test2Model.PrMeasure" Width="1.5" PointX="3" PointY="7" />
+        <AssociationConnector Association="Test2Model.FK_IM1" />
+        <EntityTypeShape EntityType="Test2Model.Client" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Test2Model.Supplier" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Test2Model.PerImport" Width="1.5" PointX="5.625" PointY="4.125" />
+        <AssociationConnector Association="Test2Model.FK_P" />
+        <AssociationConnector Association="Test2Model.FK_St" />
+        <AssociationConnector Association="Test2Model.FK_SUP" />
+        <EntityTypeShape EntityType="Test2Model.PerExport" Width="1.5" PointX="8.625" PointY="2.125" />
+        <AssociationConnector Association="Test2Model.FK_SPE" />
+        <AssociationConnector Association="Test2Model.FK_PE" />
+        <AssociationConnector Association="Test2Model.FK_WHPE" />
+        <EntityTypeShape EntityType="Test2Model.ExpQuantity" Width="1.5" PointX="10.875" PointY="2" />
+        <AssociationConnector Association="Test2Model.FK_CEQ" />
+        <AssociationConnector Association="Test2Model.FK_IEQ" />
+        <AssociationConnector Association="Test2Model.FK_PEQ" />
+        <AssociationConnector Association="Test2Model.FK_WHEQ" />
+        <EntityTypeShape EntityType="Test2Model.stprodu" Width="1.5" PointX="8.625" PointY="0.75" />
+        <AssociationConnector Association="Test2Model.FK__stprodu__P_code__01142BA1" />
+        <AssociationConnector Association="Test2Model.FK__stprodu__St_Name__00200768" />
+        <EntityTypeShape EntityType="Test2Model.ImpQuantity" Width="1.5" PointX="8.625" PointY="6.125" />
+        <AssociationConnector Association="Test2Model.FK_IIQ" />
+        <AssociationConnector Association="Test2Model.FK_SIQ" />
+        <AssociationConnector Association="Test2Model.FK_WHIQ" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
